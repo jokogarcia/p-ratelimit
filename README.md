@@ -2,6 +2,8 @@
 
 > Makes sure you don’t call rate-limited APIs too quickly.
 
+I forked this from the [original repo ](https://github.com/natesilva/p-ratelimit/) to update the redis dependency to a more recent one. I also removed support for ioredis.
+
 This is an easy-to-use utility for calling rate-limited APIs. It will prevent you from exceeding rate limits by queueing requests that would go over your rate limit quota.
 
 Rate-limits can be applied across multiple servers if you use Redis.
@@ -11,7 +13,7 @@ It works with any API function that returns a Promise.
 ## Install
 
 ```
-$ npm i p-ratelimit
+$ npm i p-ratelimit-jg
 ```
 
 ## What’s different

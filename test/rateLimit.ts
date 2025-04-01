@@ -1,6 +1,6 @@
 import test from 'ava';
 import * as redis from 'fakeredis';
-import { RedisClient } from 'redis';
+import { RedisClientType as RedisClient } from 'redis';
 import * as td from 'testdouble';
 import { Quota, QuotaManager, RedisQuotaManager } from '../src';
 import { pRateLimit } from '../src/rateLimit';

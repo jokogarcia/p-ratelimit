@@ -68,6 +68,7 @@ export class QuotaManager {
 
   protected removeExpiredHistory() {
     const expired = Date.now() - this._quota.interval;
+    //@ts-ignore
     while (this.history.length && this.history.peekFront() < expired) {
       this.history.shift();
     }

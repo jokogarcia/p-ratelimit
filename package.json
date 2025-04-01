@@ -1,10 +1,16 @@
 {
-  "name": "p-ratelimit",
+  "name": "p-ratelimit-jg",
   "version": "1.0.1",
   "description": "Promise-based utility to make sure you don’t call rate-limited APIs too quickly.",
-  "repository": "natesilva/p-ratelimit",
+  "repository": "jokogarcia/p-ratelimit",
   "license": "MIT",
   "author": "Nate Silva <nate@natesilva.com>",
+  "contributors":[
+    {
+      "name": "Joaquin Garcia",
+      "email": "jokogarcia@gmail.com"
+    }
+  ],
   "main": "build/src/index.js",
   "types": "build/src/index.d.ts",
   "scripts": {
@@ -26,13 +32,11 @@
     "node": ">=10.23.0"
   },
   "devDependencies": {
-    "@types/ioredis": "^4.17.8",
     "@types/node": "^10.17.48",
-    "@types/redis": "^2.8.28",
     "ava": "^3.14.0",
     "del-cli": "^3.0.1",
     "fakeredis": "^2.0.0",
-    "ioredis": "^4.19.2",
+    "redis":"^4.7.0",
     "np": "^7.0.0",
     "nyc": "^15.1.0",
     "prettier": "^2.2.1",

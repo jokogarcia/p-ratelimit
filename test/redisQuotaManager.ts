@@ -3,11 +3,10 @@ import * as redis from 'fakeredis';
 import { Quota, RedisQuotaManager } from '../src';
 import { sleep, uniqueId } from '../src/util';
 
-import { RedisClient } from 'redis';
-import * as IORedis from 'ioredis';
+import { RedisClientType as RedisClient } from 'redis';
 import test from 'ava';
 
-type RedisCompatibleClient = RedisClient | IORedis.Redis | IORedis.Cluster;
+type RedisCompatibleClient = RedisClient;
 
 // testing requires a real Redis server
 // fakeredis, redis-mock, redis-js, etc. have missing or broken client.duplicate()
@@ -25,19 +24,12 @@ const REDIS_PORT = 6379;
 function getRedisClients(): RedisCompatibleClient | RedisCompatibleClient[] {
   switch (REDIS_CLIENT) {
     case 'ioredis':
-      return new IORedis(REDIS_PORT, REDIS_SERVER);
+    case 'cluster':
+      throw new Error(
+        'ioredis is not supported in this test. Please use fakeredis or a real Redis server.'
+      );
       break;
 
-    case 'cluster':
-      const config = [
-        { port: 7000, host: 'localhost' },
-        { port: 7001, host: 'localhost' },
-        { port: 7002, host: 'localhost' },
-        { port: 7003, host: 'localhost' },
-        { port: 7004, host: 'localhost' },
-        { port: 7005, host: 'localhost' }
-      ];
-      return [new IORedis.Cluster(config), new IORedis.Cluster(config)];
 
     case 'fakeredis':
     default:
